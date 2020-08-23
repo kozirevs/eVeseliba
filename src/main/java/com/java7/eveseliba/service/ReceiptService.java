@@ -9,6 +9,7 @@ import com.java7.eveseliba.repository.ReceiptRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,4 +33,11 @@ public class ReceiptService {
         List<Receipt> receipts = receiptRepository.findAll();
         return receipts.stream().map(receiptMapper::toDTO).collect(Collectors.toList());
     }
+
+    public ReceiptDTO getReceiptById(Long id) {
+        Optional<Receipt> optionalReceipt = receiptRepository.findById(id);
+        Receipt receipt = optionalReceipt.orElseGet(Receipt::new);
+        return receiptMapper.toDTO(receipt);
+    }
+
 }

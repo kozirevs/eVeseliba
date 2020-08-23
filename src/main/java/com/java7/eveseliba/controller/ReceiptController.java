@@ -28,4 +28,9 @@ public class ReceiptController {
         return receiptService.getReceipts();
     }
 
+    @GetMapping("/receipt/({id})")
+    public ReceiptDTO getReceiptById(@PathVariable("id") Long id) {
+        return receiptService.getReceiptById(id);
+    }
+
 }
