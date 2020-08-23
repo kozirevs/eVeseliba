@@ -6,6 +6,7 @@ import com.java7.eveseliba.mapper.ReceiptMapper;
 import com.java7.eveseliba.model.Receipt;
 import com.java7.eveseliba.model.User;
 import com.java7.eveseliba.repository.ReceiptRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +47,12 @@ public class ReceiptService {
         Example<Receipt> receiptExample = Example.of(receipt);
         List<Receipt> receipts = receiptRepository.findAll(receiptExample);
         return receipts.stream().map(receiptMapper::toDTO).collect(Collectors.toList());
+    }
+
+    public void closeReceipt(Long id) {
+        Receipt receipt = receiptRepository.getOne(id);
+        receipt.setActive(false);
+        receiptRepository.save(receipt);
     }
 
 }

@@ -23,7 +23,7 @@ public class ReceiptController {
         return receiptService.createReceipt(receiptDTO);
     }
 
-    @GetMapping("/receipt")
+    @GetMapping("/receipts")
     public List<ReceiptDTO> getAllReceipts() {
         return receiptService.getReceipts();
     }
@@ -36,6 +36,11 @@ public class ReceiptController {
     @PostMapping("/receipt/search")
     public List<ReceiptDTO> search(@RequestBody ReceiptDTO receiptDTO) {
         return receiptService.search(receiptDTO);
+    }
+
+    @PutMapping("/receipt/({id})/close")
+    public void closeReceipt(@PathVariable("id") Long id) {
+        receiptService.closeReceipt(id);
     }
 
 }
