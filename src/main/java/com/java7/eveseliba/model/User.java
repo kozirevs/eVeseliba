@@ -3,6 +3,8 @@ package com.java7.eveseliba.model;
 import com.java7.eveseliba.model.eenum.UserType;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -35,6 +37,12 @@ public class User {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "home_doctor_pk")
     private HomeDoctor homeDoctor;
+
+    @OneToMany(mappedBy = "patientUser")
+    private Set<Receipt> patientReceipts = new HashSet<>();
+
+    @OneToMany(mappedBy = "doctorUser")
+    private Set<Receipt> doctorReceipts = new HashSet<>();
 
     public Long getUserPk() {
         return userPk;
@@ -98,5 +106,21 @@ public class User {
 
     public void setHomeDoctor(HomeDoctor homeDoctor) {
         this.homeDoctor = homeDoctor;
+    }
+
+    public Set<Receipt> getPatientReceipts() {
+        return patientReceipts;
+    }
+
+    public void setPatientReceipts(Set<Receipt> patientReceipts) {
+        this.patientReceipts = patientReceipts;
+    }
+
+    public Set<Receipt> getDoctorReceipts() {
+        return doctorReceipts;
+    }
+
+    public void setDoctorReceipts(Set<Receipt> doctorReceipts) {
+        this.doctorReceipts = doctorReceipts;
     }
 }

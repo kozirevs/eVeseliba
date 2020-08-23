@@ -6,6 +6,8 @@ CREATE TABLE IF NOT EXISTS receipt (
     date_to TIMESTAMP NOT NULL,
     doctor_user_pk BIGINT NOT NULL,
     patient_user_pk BIGINT NOT NULL,
+    CONSTRAINT fk_receipt_doctor_user FOREIGN KEY (doctor_user_pk) REFERENCES user (user_pk),
+    CONSTRAINT fk_receipt_patient_user FOREIGN KEY (patient_user_pk) REFERENCES user (user_pk)
 );
 
 INSERT INTO receipt (content, is_active, date_from, date_to, doctor_user_pk, patient_user_pk) VALUES

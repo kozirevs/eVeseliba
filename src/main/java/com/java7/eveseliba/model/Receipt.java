@@ -24,11 +24,13 @@ public class Receipt {
     @Column(name = "date_to")
     private Date dateTo;
 
-    @Column(name = "patient_user_pk")
-    private Long patientUserPk;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "patient_user_pk")
+    private User patientUser;
 
-    @Column(name = "doctor_user_pk")
-    private Long doctorUserPk;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "doctor_user_pk")
+    private User doctorUser;
 
     public Long getReceiptPk() {
         return receiptPk;
@@ -70,19 +72,19 @@ public class Receipt {
         this.dateTo = dateTo;
     }
 
-    public Long getPatientUserPk() {
-        return patientUserPk;
+    public User getPatientUser() {
+        return patientUser;
     }
 
-    public void setPatientUserPk(Long patientUserPk) {
-        this.patientUserPk = patientUserPk;
+    public void setPatientUser(User patientUser) {
+        this.patientUser = patientUser;
     }
 
-    public Long getDoctorUserPk() {
-        return doctorUserPk;
+    public User getDoctorUser() {
+        return doctorUser;
     }
 
-    public void setDoctorUserPk(Long doctorUserPk) {
-        this.doctorUserPk = doctorUserPk;
+    public void setDoctorUser(User doctorUser) {
+        this.doctorUser = doctorUser;
     }
 }
