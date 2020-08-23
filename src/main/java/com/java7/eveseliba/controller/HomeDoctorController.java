@@ -24,8 +24,8 @@ public class HomeDoctorController {
         return homeDoctorService.getHomeDoctors();
     }
 
-//    @GetMapping("/HomeDoctor/user/({id})")
-//    public HomeDoctorDTO getHomeDoctorByUserId(@PathVariable("id") Long id) {
-//        return homeDoctorService.getHomeDoctorByUserId(id);
-//    }
+    @GetMapping("/HomeDoctor/user/({id})")
+    public HomeDoctorDTO getHomeDoctorByUserId(@PathVariable("id") Long id) {
+        return homeDoctorService.getHomeDoctorByUserId(id);
+    }
 }

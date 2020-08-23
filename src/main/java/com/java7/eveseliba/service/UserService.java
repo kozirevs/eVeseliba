@@ -7,6 +7,8 @@ import com.java7.eveseliba.mapper.UserMapper;
 import com.java7.eveseliba.model.HomeDoctor;
 import com.java7.eveseliba.model.User;
 import com.java7.eveseliba.repository.UserRepository;
+import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +32,13 @@ public class UserService {
         return userMapper.toDTO(createdUser);
     }
 
+    public void updateUser(UserDTO userDTO) {
+        User userToUpdate = userMapper.fromDTO(userDTO);
+        User userFromDB = userRepository.getOne(userToUpdate.getUserPk());
+        BeanUtils.copyProperties(userToUpdate, userFromDB, "userPk");
+        userRepository.save(userFromDB);
+    }
+
     public List<UserDTO> getUsers() {
         List<User> users = userRepository.findAll();
         return users.stream().map(userMapper::toDTO).collect(Collectors.toList());
@@ -39,5 +48,13 @@ public class UserService {
         Optional<User> optionalUser = userRepository.findById(id);
         User user = optionalUser.orElseGet(User::new);
         return userMapper.toDTO(user);
+    }
+
+    public List<UserDTO> seatch(UserDTO userDTO) {
+        User user = userMapper.fromDTO(userDTO);
+        Example<User> userExample = Example.of(user);
+        List<User> users = userRepository.findAll(userExample);
+        return users.stream().map(userMapper::toDTO).collect(Collectors.toList());
+
     }
 }

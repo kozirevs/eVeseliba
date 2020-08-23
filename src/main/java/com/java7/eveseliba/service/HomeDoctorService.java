@@ -25,9 +25,9 @@ public class HomeDoctorService {
         return homeDoctors.stream().map(homeDoctorMapper::toDTO).collect(Collectors.toList());
     }
 
-//    public HomeDoctorDTO getHomeDoctorByUserId(Long id) {
-//        HomeDoctor homeDoctor = homeDoctorRepository.getHomeDoctorByUserId(id);
-//        return homeDoctorMapper.toDTO(homeDoctor);
-//    }
+    public HomeDoctorDTO getHomeDoctorByUserId(Long id) {
+        HomeDoctor homeDoctor = homeDoctorRepository.getHomeDoctorByUserId(id);
+        return homeDoctorMapper.toDTO(homeDoctor);
+    }
 
 }

@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface HomeDoctorRepository extends JpaRepository<HomeDoctor, Long> {
 
-//    @Query(value = "SELECT h FROM HomeDoctor h WHERE h.user_pk =:id")
-//    HomeDoctor getHomeDoctorByUserId(@Param("id") Long Id);
+    @Query(value = "FROM HomeDoctor h JOIN h.users u WHERE u.userPk =:id")
+    HomeDoctor getHomeDoctorByUserId(@Param("id") Long Id);
 }
