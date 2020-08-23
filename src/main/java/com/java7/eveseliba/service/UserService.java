@@ -50,11 +50,10 @@ public class UserService {
         return userMapper.toDTO(user);
     }
 
-    public List<UserDTO> seatch(UserDTO userDTO) {
+    public List<UserDTO> search(UserDTO userDTO) {
         User user = userMapper.fromDTO(userDTO);
         Example<User> userExample = Example.of(user);
         List<User> users = userRepository.findAll(userExample);
         return users.stream().map(userMapper::toDTO).collect(Collectors.toList());
-
     }
 }

@@ -38,6 +38,6 @@ public class UserController {
 
     @PostMapping("/users/search")
     public List<UserDTO> search(@RequestBody UserDTO userDTO) {
-        return null;
+        return userService.search(userDTO);
     }
 }

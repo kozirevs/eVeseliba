@@ -2,10 +2,7 @@ package com.java7.eveseliba.controller;
 
 import com.java7.eveseliba.dto.HomeDoctorDTO;
 import com.java7.eveseliba.service.HomeDoctorService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,4 +25,10 @@ public class HomeDoctorController {
     public HomeDoctorDTO getHomeDoctorByUserId(@PathVariable("id") Long id) {
         return homeDoctorService.getHomeDoctorByUserId(id);
     }
+
+    @PostMapping("/HomeDoctors/search")
+    public List<HomeDoctorDTO> search(@RequestBody HomeDoctorDTO homeDoctorDTO) {
+        return homeDoctorService.search(homeDoctorDTO);
+    }
+
 }

@@ -20,7 +20,12 @@ public class UserMapper {
         user.setEmail(userDTO.getEmail());
         user.setHomeDoctor(homeDoctor);
         user.setPasswordHash(userDTO.getPasswordHash());
-        user.setType(UserType.valueOf(userDTO.getType()));
+
+        if (userDTO.getType() == null) {
+            user.setType(null);
+        } else {
+            user.setType(UserType.valueOf(userDTO.getType()));
+        }
         user.setUserPk(userDTO.getUserPk());
 
         return user;

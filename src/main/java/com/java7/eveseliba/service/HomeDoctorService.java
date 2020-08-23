@@ -4,6 +4,7 @@ import com.java7.eveseliba.dto.HomeDoctorDTO;
 import com.java7.eveseliba.mapper.HomeDoctorMapper;
 import com.java7.eveseliba.model.HomeDoctor;
 import com.java7.eveseliba.repository.HomeDoctorRepository;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,6 +29,13 @@ public class HomeDoctorService {
     public HomeDoctorDTO getHomeDoctorByUserId(Long id) {
         HomeDoctor homeDoctor = homeDoctorRepository.getHomeDoctorByUserId(id);
         return homeDoctorMapper.toDTO(homeDoctor);
+    }
+
+    public List<HomeDoctorDTO> search(HomeDoctorDTO homeDoctorDTO) {
+        HomeDoctor homeDoctor = homeDoctorMapper.fromDTO(homeDoctorDTO);
+        Example<HomeDoctor> homeDoctorExample = Example.of(homeDoctor);
+        List<HomeDoctor> homeDoctors = homeDoctorRepository.findAll(homeDoctorExample);
+        return homeDoctors.stream().map(homeDoctorMapper::toDTO).collect(Collectors.toList());
     }
 
 }
