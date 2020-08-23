@@ -6,6 +6,7 @@ import com.java7.eveseliba.mapper.ReceiptMapper;
 import com.java7.eveseliba.model.Receipt;
 import com.java7.eveseliba.model.User;
 import com.java7.eveseliba.repository.ReceiptRepository;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,6 +39,13 @@ public class ReceiptService {
         Optional<Receipt> optionalReceipt = receiptRepository.findById(id);
         Receipt receipt = optionalReceipt.orElseGet(Receipt::new);
         return receiptMapper.toDTO(receipt);
+    }
+
+    public List<ReceiptDTO> search(ReceiptDTO receiptDTO) {
+        Receipt receipt = receiptMapper.fromDTO(receiptDTO);
+        Example<Receipt> receiptExample = Example.of(receipt);
+        List<Receipt> receipts = receiptRepository.findAll(receiptExample);
+        return receipts.stream().map(receiptMapper::toDTO).collect(Collectors.toList());
     }
 
 }

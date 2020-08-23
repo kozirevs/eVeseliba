@@ -33,4 +33,9 @@ public class ReceiptController {
         return receiptService.getReceiptById(id);
     }
 
+    @PostMapping("/receipt/search")
+    public List<ReceiptDTO> search(@RequestBody ReceiptDTO receiptDTO) {
+        return receiptService.search(receiptDTO);
+    }
+
 }
