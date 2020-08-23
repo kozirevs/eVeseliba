@@ -1,10 +1,7 @@
 package com.java7.eveseliba.service;
 
-import com.java7.eveseliba.dto.HomeDoctorDTO;
 import com.java7.eveseliba.dto.UserDTO;
-import com.java7.eveseliba.mapper.HomeDoctorMapper;
 import com.java7.eveseliba.mapper.UserMapper;
-import com.java7.eveseliba.model.HomeDoctor;
 import com.java7.eveseliba.model.User;
 import com.java7.eveseliba.repository.UserRepository;
 import org.springframework.beans.BeanUtils;

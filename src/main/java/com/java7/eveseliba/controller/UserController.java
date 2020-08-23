@@ -4,6 +4,7 @@ import com.java7.eveseliba.dto.UserDTO;
 import com.java7.eveseliba.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public UserDTO createUser(@RequestBody UserDTO userDTO) {
+    public UserDTO createUser(@Valid @RequestBody UserDTO userDTO) {
         return userService.createUser(userDTO);
     }
 

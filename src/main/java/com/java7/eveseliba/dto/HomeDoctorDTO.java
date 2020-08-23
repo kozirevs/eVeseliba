@@ -47,4 +47,14 @@ public class HomeDoctorDTO {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    @Override
+    public String toString() {
+        return "HomeDoctorDTO{" +
+                "homeDoctorPk=" + homeDoctorPk +
+                ", name='" + name + '\'' +
+                ", externalRef='" + externalRef + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

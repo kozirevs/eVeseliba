@@ -1,4 +1,4 @@
-create TABLE IF NOT EXISTS user (
+CREATE TABLE IF NOT EXISTS user (
     user_pk BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     address VARCHAR(250) NOT NULL,
@@ -12,7 +12,7 @@ create TABLE IF NOT EXISTS user (
 
 INSERT INTO user (name, address, email, phone, password_hash, user_type, home_doctor_pk) VALUES
 ('Aleksandrs K.', 'Jurmala', 'kozirevs@inbox.lv', '+371 23456789', '0000', 'PATIENT', 3),
-('Dmitrijs L.', 'Riga', 'dmitrijs@inbox.lv', '+371 23789789', '0000', 'PATIENT', 1),
+('Dmitrijs L.', 'Riga', 'dmitrijs@inbox.lv', '+371 23789789', '0000', 'DOCTOR', 1),
 ('Andrejs J.', 'Jelgava', 'andrejs@inbox.lv', '+371 22346789', '0000', 'PATIENT', 2),
 ('Julija M.', 'Ogre', 'julija@inbox.lv', '+371 23476589', '0000', 'PATIENT', 4),
 ('Mihails S.', 'Riga', 'mihails@inbox.lv', '+371 25436789', '0000', 'PATIENT', 5),

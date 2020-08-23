@@ -2,17 +2,22 @@ package com.java7.eveseliba.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 public class UserDTO {
 
     @JsonProperty("user_pk")
     private Long userPk;
 
     @JsonProperty("name")
+    @NotBlank(message = "please provide name")
     private String name;
 
     @JsonProperty("address")
     private String address;
 
+    @Email(message = "Email not valid")
     @JsonProperty("email")
     private String email;
 
