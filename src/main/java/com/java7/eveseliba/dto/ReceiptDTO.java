@@ -1,5 +1,6 @@
 package com.java7.eveseliba.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.NotBlank;
@@ -17,9 +18,11 @@ public class ReceiptDTO {
     @JsonProperty("is_active")
     private Boolean isActive;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
     @JsonProperty("date_from")
     private Date dateFrom;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
     @JsonProperty("date_to")
     private Date dateTo;
 

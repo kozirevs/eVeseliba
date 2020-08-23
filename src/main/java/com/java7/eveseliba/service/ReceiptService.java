@@ -8,6 +8,9 @@ import com.java7.eveseliba.model.User;
 import com.java7.eveseliba.repository.ReceiptRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ReceiptService {
 
@@ -25,4 +28,8 @@ public class ReceiptService {
         return receiptMapper.toDTO(createdReceipt);
     }
 
+    public List<ReceiptDTO> getReceipts() {
+        List<Receipt> receipts = receiptRepository.findAll();
+        return receipts.stream().map(receiptMapper::toDTO).collect(Collectors.toList());
+    }
 }
