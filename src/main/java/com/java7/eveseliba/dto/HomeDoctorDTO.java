@@ -2,7 +2,7 @@ package com.java7.eveseliba.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class HomeDoctorDTO {
+public class HomeDoctorDTO extends DtoHolder {
 
     @JsonProperty("id")
     private Long homeDoctorPk;

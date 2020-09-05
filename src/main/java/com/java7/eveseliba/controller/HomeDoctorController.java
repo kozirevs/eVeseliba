@@ -1,34 +1,38 @@
 package com.java7.eveseliba.controller;
 
 import com.java7.eveseliba.dto.HomeDoctorDTO;
+import com.java7.eveseliba.dto.Response;
+import com.java7.eveseliba.mapper.ResponseMapper;
 import com.java7.eveseliba.service.HomeDoctorService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/rest/HomeDoctor.svc")
 public class HomeDoctorController {
 
     private final HomeDoctorService homeDoctorService;
+    private final ResponseMapper responseMapper;
 
-    public HomeDoctorController(HomeDoctorService homeDoctorService) {
+    public HomeDoctorController(HomeDoctorService homeDoctorService, ResponseMapper responseMapper) {
         this.homeDoctorService = homeDoctorService;
+        this.responseMapper = responseMapper;
     }
 
     @GetMapping("/HomeDoctors")
-    public List<HomeDoctorDTO> getAllDoctors() {
-        return homeDoctorService.getHomeDoctors();
+    public Response getAllDoctors() {
+        return responseMapper.mapSuccess(homeDoctorService.getHomeDoctors());
     }
 
     @GetMapping("/HomeDoctor/user/({id})")
-    public HomeDoctorDTO getHomeDoctorByUserId(@PathVariable("id") Long id) {
-        return homeDoctorService.getHomeDoctorByUserId(id);
+    public Response getHomeDoctorByUserId(@PathVariable("id") Long id) {
+        return responseMapper.mapSuccess(homeDoctorService.getHomeDoctorByUserId(id));
     }
 
     @PostMapping("/HomeDoctors/search")
-    public List<HomeDoctorDTO> search(@RequestBody HomeDoctorDTO homeDoctorDTO) {
-        return homeDoctorService.search(homeDoctorDTO);
+    public Response search(@RequestBody HomeDoctorDTO homeDoctorDTO) {
+        return responseMapper.mapSuccess(homeDoctorService.search(homeDoctorDTO));
     }
 
 }

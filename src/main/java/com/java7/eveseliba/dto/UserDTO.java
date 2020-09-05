@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-public class UserDTO {
+public class UserDTO extends DtoHolder {
 
     @JsonProperty("user_pk")
     private Long userPk;
@@ -28,7 +28,7 @@ public class UserDTO {
     private String passwordHash;
 
     @JsonProperty("user_type")
-    private String  type;
+    private String type;
 
     @JsonProperty("home_doctor_id")
     private Long homeDoctorPk;

@@ -30,6 +30,9 @@ public class User {
     @Column(name = "password_hash")
     private String passwordHash;
 
+    @Column(name = "user_status")
+    private String userStatus;
+
     @Column(name = "user_type")
     @Enumerated(EnumType.STRING)
     private UserType type;
@@ -122,5 +125,13 @@ public class User {
 
     public void setDoctorReceipts(Set<Receipt> doctorReceipts) {
         this.doctorReceipts = doctorReceipts;
+    }
+
+    public String getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
     }
 }

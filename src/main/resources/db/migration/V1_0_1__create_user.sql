@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS user (
     phone VARCHAR(20) NOT NULL,
     password_hash VARCHAR(250) NOT NULL,
     user_type VARCHAR(255) NOT NULL,
+    user_status VARCHAR(10) NOT NULL DEFAULT 'ACTIVE',
     home_doctor_pk BIGINT NOT NULL,
     CONSTRAINT fk_user_home_doctor FOREIGN KEY (home_doctor_pk) REFERENCES home_doctor (home_doctor_pk)
 );

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
-public class ReceiptDTO {
+public class ReceiptDTO extends DtoHolder {
 
     @JsonProperty("receipt_pk")
     private Long receiptPk;

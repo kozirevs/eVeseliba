@@ -29,6 +29,11 @@ public class UserService {
         return userMapper.toDTO(createdUser);
     }
 
+    public Boolean isEmailExists(String email) {
+        User user = userRepository.findByEmail(email);
+        return user != null;
+    }
+
     public void updateUser(UserDTO userDTO) {
         User userToUpdate = userMapper.fromDTO(userDTO);
         User userFromDB = userRepository.getOne(userToUpdate.getUserPk());
@@ -38,7 +43,10 @@ public class UserService {
 
     public List<UserDTO> getUsers() {
         List<User> users = userRepository.findAll();
-        return users.stream().map(userMapper::toDTO).collect(Collectors.toList());
+        return users.stream()
+                .filter(t -> t.getUserStatus().equals("ACTIVE"))
+                .map(userMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
     public UserDTO getUserById(Long id) {
@@ -51,6 +59,16 @@ public class UserService {
         User user = userMapper.fromDTO(userDTO);
         Example<User> userExample = Example.of(user);
         List<User> users = userRepository.findAll(userExample);
-        return users.stream().map(userMapper::toDTO).collect(Collectors.toList());
+        return users.stream()
+                .filter(t -> t.getUserStatus().equals("ACTIVE"))
+                .map(userMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    public UserDTO deleteUser(Long id) {
+        User user = userRepository.getOne(id);
+        user.setUserStatus("DELETED");
+        User userDeleted = userRepository.save(user);
+        return userMapper.toDTO(userDeleted);
     }
 }
