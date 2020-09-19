@@ -110,4 +110,35 @@ public class UserDTO extends DtoHolder {
                 ", homeDoctorPk=" + homeDoctorPk +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserDTO userDTO = (UserDTO) o;
+
+        if (userPk != null ? !userPk.equals(userDTO.userPk) : userDTO.userPk != null) return false;
+        if (name != null ? !name.equals(userDTO.name) : userDTO.name != null) return false;
+        if (address != null ? !address.equals(userDTO.address) : userDTO.address != null) return false;
+        if (email != null ? !email.equals(userDTO.email) : userDTO.email != null) return false;
+        if (phone != null ? !phone.equals(userDTO.phone) : userDTO.phone != null) return false;
+        if (passwordHash != null ? !passwordHash.equals(userDTO.passwordHash) : userDTO.passwordHash != null)
+            return false;
+        if (type != null ? !type.equals(userDTO.type) : userDTO.type != null) return false;
+        return homeDoctorPk != null ? homeDoctorPk.equals(userDTO.homeDoctorPk) : userDTO.homeDoctorPk == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = userPk != null ? userPk.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (passwordHash != null ? passwordHash.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (homeDoctorPk != null ? homeDoctorPk.hashCode() : 0);
+        return result;
+    }
 }

@@ -1,7 +1,6 @@
 package com.java7.eveseliba.controller;
 
 import com.java7.eveseliba.dto.ReceiptDTO;
-import com.java7.eveseliba.dto.UserDTO;
 import com.java7.eveseliba.service.ReceiptService;
 import org.springframework.web.bind.annotation.*;
 

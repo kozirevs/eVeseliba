@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS user (
 );
 
 INSERT INTO user (name, address, email, phone, password_hash, user_type, home_doctor_pk) VALUES
-('Aleksandrs K.', 'Jurmala', 'kozirevs@inbox.lv', '+371 23456789', '0000', 'PATIENT', 3),
+('Test Aleksandrs K.', 'Jurmala', 'kozirevs@inbox.lv', '+371 23456789', '0000', 'PATIENT', 3),
 ('Dmitrijs L.', 'Riga', 'dmitrijs@inbox.lv', '+371 23789789', '0000', 'DOCTOR', 1),
 ('Andrejs J.', 'Jelgava', 'andrejs@inbox.lv', '+371 22346789', '0000', 'PATIENT', 2),
 ('Julija M.', 'Ogre', 'julija@inbox.lv', '+371 23476589', '0000', 'PATIENT', 4),
